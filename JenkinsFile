@@ -40,7 +40,7 @@ pipeline{ //IP01 Pipeline - EGC
         }
     }
     post{
-        always{
+        success{
                 //Slack Message 
             slackSend color: "good", message: "Gallery Build, Test and Deploy Job Started.  Details: Job Name: ${env.JOB_NAME}, Buld Number: ${env.BUILD_NUMBER}, Click: ${env.BUILD_URL} to see the build details and click https://ip01-gallery.herokuapp.com/ to view app."
         }
