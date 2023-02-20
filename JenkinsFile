@@ -1,4 +1,4 @@
-pipeline{
+pipeline{ //IP01 Pipeline - EGC
     agent any
     tools{
         nodejs 'nodejs'
@@ -31,7 +31,10 @@ pipeline{
         }
         stage('Deployment to Heroku or Render'){
             steps{
-                //Deployment to production environment
+                //Deployment to production environmen
+            withCredentials([usernameColonPassword(credentialsId: 'heroku', variable: 'HEROKU_CREDENTIALS')]){
+                sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/ip01-gallery.git master'
+            }
 
             }
         }
