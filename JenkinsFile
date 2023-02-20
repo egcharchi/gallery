@@ -32,7 +32,7 @@ pipeline{ //IP01 Pipeline - EGC
         stage('Deployment to Heroku or Render'){
             steps{
                 //Deployment to production environmen
-            withCredentials([usernameColonPassword(credentialsId: 'herokus', variable: 'HEROKU_CREDENTIALS')]){
+            withCredentials([usernameColonPassword(credentialsId: 'heroku', variable: 'HEROKU_CREDENTIALS')]){
                 sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/ip01-gallery.git master'
             }
 
