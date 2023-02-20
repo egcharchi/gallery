@@ -32,16 +32,22 @@ pipeline{
         stage('Deployment to Heroku or Render'){
             steps{
                 //Deployment to production environment
+
             }
         }
     }
     post{
         always{
                 //Slack Message 
-            slackSend color: "", message: "Gallery Build, Test and Deploy Job Started.  Details: ${env.JOB_NAME}, ${env.BUILD_NUMBER}, Click: ${env.BUILD_URL} to see the build details."
+            slackSend color: "good", message: "Gallery Build, Test and Deploy Job Started.  Details: ${env.JOB_NAME}, ${env.BUILD_NUMBER}, Click: ${env.BUILD_URL} to see the build details."
         }
         failure{
                 //Email on Failure
+                emailext body: "The Gallery Build has failed.  Please see details here: ${env.BUILD_URL} and attached.",
+                subject: "Jenkins Build - ${env.JOB_NAME}, ${env.BUILD_NUMBER}, Status - ${env.BUILD_STATUS}",
+                to: "eric.charchi@student.moringaschool.com, eg.pbstudio@outlook.com",
+                attachLog: true
+
         }
     }
 }
