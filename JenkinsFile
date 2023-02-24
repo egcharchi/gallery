@@ -34,7 +34,7 @@ pipeline{ //IP01 Pipeline - EGC
         stage('Test'){
             steps{
                 //Testing
-                sh 'npm test'
+                sh 'npm test' 
             }
         }
         stage('Deployment to Heroku or Render'){
@@ -42,8 +42,9 @@ pipeline{ //IP01 Pipeline - EGC
                 //Deployment to production environmen
             //withCredentials([usernameColonPassword(credentialsId: 'heroku', variable: 'HEROKU_CREDENTIALS')]){
                 //sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/ip01-gallery.git master'
+             
               sh 'curl -X POST https://api.render.com/deploy/srv-cfs7pjhgp3jt6tj57o10?key=TuB_rHAK4yA&ref=$COMMIT'
-            //renderup::rnd_iCBfgvXWtyevUjYMsPT0aSadN6pc
+            //renderup::rnd_iCBfgvXWtyevUjYMsPT0aSadN6pc  w
             }
 
 
