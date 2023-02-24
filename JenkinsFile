@@ -29,6 +29,9 @@ pipeline{ //IP01 Pipeline - EGC
                 sh 'npm install mongoose'
                 sh 'npm install multer'
                 sh 'npm install uuid'
+                sh 'npm install yarn'
+                sh 'npm install dotenv'
+                sh 'yarn'
             }
         }
         stage('Test'){
